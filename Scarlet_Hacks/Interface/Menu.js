@@ -1,51 +1,65 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image,Text, KeyboardAvoidingView} from 'react-native';
-import LoginForm from './LoginForm';
+import { StyleSheet,View,TouchableOpacity,TextInput, Text, KeyboardAvoidingView} from 'react-native';
 
 export default class Login extends Component {
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style= {styles.container}>
-                <Text>Start Point:</Text>
-                <TouchableOpacity style = {styles.button}>
-                    <Text style = {styles.buttonText}>FIND LOCATION</Text>
-                </TouchableOpacity>
-                <TextInput 
-                    style = {styles.input}  
-                    placeholder= "Destination"
-                    placeholderTextColor = 'white'
-                    returnKeyType = "go"
-                    secureTextEntry
-                    ref = {(input) => this.passwordInput = input}
-                    style = {styles.input} 
-                    underlineColorAndroid='rgba(0,0,0,0)'
-                />
+                <View style={styles.regform}>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.btntext}>Find Location</Text>
+                    </TouchableOpacity>  
+                    <TextInput 
+                        style={styles.textinput} 
+                        placeholder = "Start Location"
+                        underlineColorAndroid={'transparent'} 
+                    />
+                    <TextInput 
+                        style={styles.textinput} 
+                        placeholder = "Destination"
+                        underlineColorAndroid={'transparent'} 
+                    />
+                    <TouchableOpacity style={styles.button}>
+                    <Text style={styles.btntext}>Find Bus Route</Text>
+                    </TouchableOpacity>
+                </View>
             </KeyboardAvoidingView>
-            <TouchableOpacity style = {styles.button}>
-                <Text style = {styles.buttonText}>FIND BUS ROUTE</Text>
-            </TouchableOpacity>
-        )
+        );
+      }
     }
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#e74c3c'
-    },
-    logoContainer: {
-        alignItems: 'center',
-        flexGrow: 1,
-        justifyContent: 'center'
-    },
-    logo: {
-        width: 100,
-        height: 100
-    },
-    title: {
-        marginBottom: 50,
-        textAlign: 'center',
-        color: 'white',
-        fontSize: 32
-    }
-})
+    
+    const styles = StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: '#e74c3c',
+            alignItems: 'center',
+            justifyContent: 'center',
+            paddingLeft: 60,
+            paddingRight: 60,
+          },
+        regform: {
+            alignSelf: 'stretch',
+        
+        },
+        textinput: {
+            alignSelf: 'stretch',
+            height: 40,
+            marginTop: 30,
+            marginBottom: 30,
+            color: '#fff',
+            borderBottomColor: '#f8f8f8',
+            borderBottomWidth: 1,
+        },
+        button: {
+            alignSelf: 'stretch',
+            alignItems: 'center',
+            padding: 20,
+            backgroundColor: '#c0392b',
+            marginTop: 30,
+        },
+        btntext: {
+            color: '#fff',
+            fontWeight: 'bold',
+        }
+    });
+    
