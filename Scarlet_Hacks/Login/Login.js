@@ -1,18 +1,7 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import { StyleSheet, View, Image,Text,TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
 
 class Login extends Component {
-    constructor(){
-        super()
-        this.navigate = this.navigate.binf(this)
-    }
-
-    navigate(route){
-        this.props.navigator.push({
-            name
-        })
-    }
 
     render() {
         return (
@@ -101,9 +90,5 @@ const styles = StyleSheet.create({
         marginTop : 10
     }
 });
-
-Component.propTypes = {
-    text: PropTypes.shape.isRequired,
-    };
 
 export default Login
