@@ -19,6 +19,8 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@expo/ex-navigation": "^4.0.0",
+    "babel-preset-react-native-stage-0": "^1.0.1",
     "expo": "^22.0.2",
     "firebase": "^4.6.2",
     "prop-types": "^15.6.0",

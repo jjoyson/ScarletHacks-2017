@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet,View,AppRegistry ,TouchableOpacity,TextInput, Text, KeyboardAvoidingView} from 'react-native';
 import Database from "../Database/Database";
+var counter = 0;
 
 export default class Menu extends Component {
     constructor(props) {
@@ -8,18 +9,10 @@ export default class Menu extends Component {
         this.state = {
             myLocation: '',
             endLocation: '',
-            user: "1ILlTuKqwNZYgAXP2wqaipawYJ33"//Jithin
+            user: ""
         }
         
     }
-    click1 = () => {
-        this.setState({user: 'Zz596ODbQ3RaKf6nhPKcGy9p5SZ2'});//Tanwir Right
-    }
-
-    click2 = () => {
-        this.setState({user: 'ggQSAspq0tbdqZTtg5W2XaIvyqx2'});//Sai Left
-    }
-
     handleClick = () => {
         this.setState({myLocation: 'My Location'});
     }
@@ -31,7 +24,8 @@ export default class Menu extends Component {
         if (this.state.endLocation == ''){
             this.setState({endLocation: 'My Location'});
          }
-        Database.setLocation(this.state.user,this.state.myLocation,this.state.endLocation);
+        Database.setLocation(counter,this.state.myLocation,this.state.endLocation);
+        counter = counter + 1;
     }
 
     render() {
