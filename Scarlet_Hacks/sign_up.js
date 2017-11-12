@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, KeyboardAvoidingView } from 'react-native';
-import Regform from './app/components/Regform'
+import Regform from './Regform'
 
 export default class App extends React.Component {
   render() {
