@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel='stylesheet' type='text/css' href="style.css">
+    <title>Waypoints in directions</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="right-panel">
+    <div>
+    <b>Start:</b><br>
+    <input id = 'start' type='text'/>
+    <br>
+    <b>Waypoints:</b>
+    <p><small>add comma for more waypoints</small></p>
+    <input type = 'text' id = 'waypoints'/>
+    <br>
+    <b>End:</b><br>
+    <input id = 'end' type='text'/>
+    <br>
+      <input type="submit" id="submit">
+    </div>
+    <div id="directions-panel"></div>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADlDfuQUMEmPIbCFI6WicHcnrcJn90VHw&callback=initMap"
+    async defer></script>
+    <script src='app.js'></script>
+  </body>
+</html>
