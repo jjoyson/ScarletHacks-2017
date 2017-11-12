@@ -2,14 +2,6 @@ import React, {Component} from 'react';
 import { StyleSheet,View,AppRegistry ,TouchableOpacity,TextInput, Text, KeyboardAvoidingView} from 'react-native';
 import Database from "../Database/Database";
 
-var def = "3300 S Federal St, Chicago, IL 60616";
-/*
-"pending" : {
-    "uid" : {
-      "End" : "4909 Church Street",
-      "Start" : "McCormick Student Village"
-    }
-*/
 export default class Menu extends Component {
     constructor(props) {
         super(props);
@@ -122,6 +114,4 @@ export default class Menu extends Component {
             color: '#fff',
             fontWeight: 'bold',
         }
-    });
-    
-AppRegistry.registerComponent('Menu', () => Menu);
+    })

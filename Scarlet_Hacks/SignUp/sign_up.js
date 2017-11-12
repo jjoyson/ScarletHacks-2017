@@ -1,7 +1,39 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput,TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import DismissKeyboard from "dismissKeyboard";
+import * as firebase from "firebase";
 
 class sign_up extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      fName: "",
+      lName: "",
+      pass: "",
+      email: "",
+      response: ""
+    };
+    this.signup = this.signup.bind(this);
+  }
+  async signup() {
+    DismissKeyboard();
+    try {
+        await firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.pass);
+        this.setState({
+            response: "account created"
+        })/*;
+        setTimeout(() => {
+            this.props.navigator.push({
+                name: "Home"
+            })
+        }, 1500);*/
+    } 
+    catch (error) {
+        this.setState({
+            response: error.toString()
+        })
+    }
+  }
   render() {
     return (
       <KeyboardAvoidingView behavior='padding' style={styles.container}>
@@ -9,25 +41,38 @@ class sign_up extends React.Component {
      	   
          <Text style={styles.header}>Registeration</Text>
 
-         <TextInput style={styles.textinput} placeholder = "First name"
-         onSubmitEditing= {() => this.lastnameInput.focus()}
-         underlineColorAndroid={'transparent'} />
+         <TextInput 
+          style={styles.textinput} 
+          placeholder = "First name"
+          underlineColorAndroid={'transparent'}
+          onChangeText={(fName) => this.setState({fName})}  
+        />
 
-         <TextInput style={styles.textinput} placeholder = "Last name"
-         ref = {(input) => this.lastnameInput = input}
-         onSubmitEditing= {() => this.password.focus()}
-         underlineColorAndroid={'transparent'} />
+         <TextInput 
+          style={styles.textinput} 
+          placeholder = "Last name"
+          underlineColorAndroid={'transparent'}
+          onChangeText={(lName) => this.setState({lName})} 
+        />
 
-         <TextInput style={styles.textinput} placeholder = "Password"
-         ref = {(input) => this.password = input}
-         onSubmitEditing= {() => this.email.focus()}
-         secureTextEntry={true} underlineColorAndroid={'transparent'} />
+        <TextInput 
+          style={styles.textinput} 
+          placeholder = "Password"
+          secureTextEntry={true} underlineColorAndroid={'transparent'} 
+          onChangeText={(pass) => this.setState({pass})}        
+        />
 
-         <TextInput style={styles.textinput} placeholder = "Email"
-         ref = {(input) => this.email = input}
-         underlineColorAndroid={'transparent'} />
+         <TextInput 
+         style={styles.textinput} 
+         placeholder = "Email"
+         onChangeText={(email) => this.setState({email})}
+         keyboardType="email-address"
+        />
 
-         <TouchableOpacity style={styles.button}>
+        <TouchableOpacity 
+          style={styles.button}
+          onPress={this.signup}
+        >
           <Text style={styles.btntext}>Sign Up</Text>
          </TouchableOpacity>
 

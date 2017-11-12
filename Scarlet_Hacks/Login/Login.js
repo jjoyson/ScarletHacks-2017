@@ -1,8 +1,39 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, Image,Text,TextInput, TouchableOpacity, KeyboardAvoidingView} from 'react-native';
+import DismissKeyboard from "dismissKeyboard";
+import * as firebase from "firebase";
 
 class Login extends Component {
-
+    constructor(props){
+        super(props);
+        this.state = {
+          fName: "",
+          lName: "",
+          pass: "",
+          email: "",
+          response: ""
+        };
+        this.login = this.login.bind(this);
+      }
+      async login() {
+        DismissKeyboard();
+        try {
+            await firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.pass);
+            this.setState({
+                response: "Logged In!"
+            })/*;
+            setTimeout(() => {
+                this.props.navigator.push({
+                    name: "Home"
+                })
+            }, 1500);*/
+        } 
+        catch (error) {
+            this.setState({
+                response: error.toString()
+            })
+        }
+    }
     render() {
         return (
             <KeyboardAvoidingView behavior="padding" style= {styles.container}>
@@ -22,6 +53,8 @@ class Login extends Component {
                             autoCorrect = {false}
                             style = {styles.input} 
                             underlineColorAndroid='rgba(0,0,0,0)'
+                            onChangeText={(email) => this.setState({email})}
+                            keyboardType="email-address"
                         />
                         <TextInput 
                             style = {styles.input}  
@@ -32,8 +65,12 @@ class Login extends Component {
                             ref = {(input) => this.passwordInput = input}
                             style = {styles.input} 
                             underlineColorAndroid='rgba(0,0,0,0)'
+                            onChangeText={(pass) => this.setState({pass})}
                         />
-                        <TouchableOpacity style = {styles.button}>
+                        <TouchableOpacity 
+                            style = {styles.button}
+                            onPress={this.login}
+                        >
                             <Text style = {styles.buttonText}>LOGIN</Text>
                         </TouchableOpacity>
                         <TouchableOpacity 
