@@ -62,15 +62,30 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
   });
 }
 
-  function getGeoLocation(){
-   
-  }
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
 
-  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-                          'Error: The Geolocation service failed.' :
-                          'Error: Your browser doesn\'t support geolocation.');
-    infoWindow.open(map);
-    }
+function changeValue(o){
+  document.getElementById('waypoints').value=o;
+ }
+function changeEndValue(o){
+  document.getElementById('end').value = o;
+}
+function changeStartValue(o){
+  document.getElementById('start').value = o;
+}
+function clickbut(){
+  document.getElementById('submit').click();
+}
+function func(){
+  document.getElementById('thisandthat').style.display='block';
+}
+function func2(){
+  document.getElementById('thatandthis').style.display='block';
+}
 

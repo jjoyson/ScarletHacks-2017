@@ -11,16 +11,18 @@
     <div id="right-panel">
     <div>
     <b>Start:</b><br>
-    <input id = 'start' type='text'/>
+    <input id = 'start' type='text' value = 'Herman Hall, il'/>
     <br>
     <b>Waypoints:</b>
     <p><small>add comma for more waypoints</small></p>
     <input type = 'text' id = 'waypoints'/>
+    <input type = 'button' id = 'thisandthat' value = 'Next Route' style = 'display:none' onclick = "changeValue('IIT Tower,US Cellular Field'), changeEndValue('35th Street Red Hots'),clickbut()"/>
+    <input type='button' id = 'thatandthis' value ='Final Route' style = 'display:none' onclick ="changeValue('Ed Glancy Field, IIT Tower, US Cellular Field, 35th Street Red Hots'),changeEndValue('3434 S Halsted Street'),clickbut()" />
     <br>
     <b>End:</b><br>
-    <input id = 'end' type='text'/>
+    <input id = 'end' type='text' value='US Cellular Field, il'/>
     <br>
-      <input type="submit" id="submit">
+      <input type="submit" id="submit" onclick='func(), func2()'/>
     </div>
     <div id="directions-panel"></div>
     </div>
